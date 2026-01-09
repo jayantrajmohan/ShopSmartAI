@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSmart AI - Intelligent Product Recommendations</title>
+    <meta name="description" content="AI-powered product recommendation engine for e-commerce">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>ShopSmart AI</span>
+                </div>
+                <div class="header-badge">
+                    <span class="badge-dot"></span>
+                    AI-Powered Demo
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Find Your Perfect Product<br>
+                    <span class="gradient-text">Powered by AI</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Tell me what you're looking for, and I'll recommend the perfect products based on your preferences, 
+                    budget, and needs. No more endless scrolling.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main App Section -->
+    <section class="app-section">
+        <div class="container">
+            <div class="app-grid">
+                <!-- Input Panel -->
+                <div class="input-panel">
+                    <div class="panel-header">
+                        <h2>What are you looking for?</h2>
+                        <p>Describe what you need in natural language</p>
+                    </div>
+
+                    <form id="recommendationForm" class="recommendation-form">
+                        <div class="form-group">
+                            <label for="productQuery">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Tell us what you're shopping for
+                            </label>
+                            <textarea 
+                                id="productQuery" 
+                                name="query" 
+                                rows="4" 
+                                placeholder="Example: I need a comfortable laptop for coding and video calls, budget around $800-1000, prefer something lightweight..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                    Category
+                                </label>
+                                <select id="category" name="category">
+                                    <option value="electronics">Electronics</option>
+                                    <option value="fashion">Fashion & Apparel</option>
+                                    <option value="home">Home & Kitchen</option>
+                                    <option value="sports">Sports & Outdoors</option>
+                                    <option value="beauty">Beauty & Personal Care</option>
+                                    <option value="books">Books & Media</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                    Budget Range
+                                </label>
+                                <select id="budget" name="budget">
+                                    <option value="budget">Budget ($0-$50)</option>
+                                    <option value="mid" selected>Mid-range ($50-$200)</option>
+                                    <option value="premium">Premium ($200-$500)</option>
+                                    <option value="luxury">Luxury ($500+)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Preferences (optional)
+                            </label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="eco_friendly" value="true">
+                                    <span>Eco-friendly</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="fast_shipping" value="true">
+                                    <span>Fast shipping</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="highly_rated" value="true" checked>
+                                    <span>Highly rated</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                            Get AI Recommendations
+                        </button>
+
+                        <div class="quick-examples">
+                            <p>Quick examples to try:</p>
+                            <button type="button" class="example-btn" data-query="I need wireless headphones for working out, sweat-resistant, good battery life, under $100">
+                                Workout headphones
+                            </button>
+                            <button type="button" class="example-btn" data-query="Looking for a minimalist backpack for daily commute, laptop compartment, water-resistant, professional look">
+                                Commuter backpack
+                            </button>
+                            <button type="button" class="example-btn" data-query="Need a standing desk for home office, adjustable height, sturdy, budget $300-400">
+                                Standing desk
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="results-panel">
+                    <div id="loadingState" class="state-container" style="display: none;">
+                        <div class="loading-animation">
+                            <div class="loading-spinner"></div>
+                            <p>AI is analyzing your preferences...</p>
+                            <div class="loading-steps">
+                                <div class="step active">Understanding your needs</div>
+                                <div class="step">Finding perfect matches</div>
+                                <div class="step">Ranking by relevance</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="emptyState" class="state-container">
+                        <div class="empty-illustration">
+                            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <h3>Ready to find your perfect product?</h3>
+                        <p>Describe what you're looking for, and our AI will recommend the best options for you.</p>
+                    </div>
+
+                    <div id="resultsContainer" style="display: none;">
+                        <div class="results-header">
+                            <h3>AI Recommendations</h3>
+                            <div class="results-meta">
+                                <span class="confidence-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    High Confidence Match
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="recommendationsList" class="recommendations-list">
+                            <!-- Recommendations will be inserted here -->
+                        </div>
+
+                        <div class="ai-insights">
+                            <h4>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 16v-4"></path>
+                                    <path d="M12 8h.01"></path>
+                                </svg>
+                                AI Analysis
+                            </h4>
+                            <p id="aiInsights"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Describe Your Needs</h3>
+                    <p>Tell us what you're looking for in natural language - no need for specific keywords</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI understands your preferences, budget, and requirements to find perfect matches</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Personalized Results</h3>
+                    <p>Get ranked recommendations with detailed explanations of why each product fits your needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p><strong>ShopSmart AI</strong> - Portfolio Project by Jayant Raj Mohan</p>
+                    <p>AI Product Manager | GenAI Solutions</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://linkedin.com/in/jayantrajmohan" target="_blank">LinkedIn</a>
+                    <a href="mailto:jayantrajmohan@gmail.com">Contact</a>
+                    <a href="../index.html">Back to Portfolio</a>
+                </div>
+            </div>
+            <div class="footer-note">
+                <p>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                    This is a demo showcasing AI-powered product recommendations. 
+                    To use real AI, add your OpenAI API key in script.js
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
