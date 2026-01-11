@@ -77,8 +77,14 @@ IMPORTANT:
 - Include at least 2-3 platforms per product
 - Mark available=true only for platforms that typically sell this product
 - Use realistic Indian pricing
-- For each available platform, include a search URL (e.g., https://www.amazon.in/s?k=product+name or https://www.flipkart.com/search?q=product+name)
-- URL-encode product names in search URLs (replace spaces with +)
+- For URLs, create detailed search URLs that include full product name with brand and model:
+  * Amazon.in: https://www.amazon.in/s?k=Brand+Model+Name&ref=nb_sb_noss
+  * Flipkart: https://www.flipkart.com/search?q=Brand+Model+Name&otracker=search
+  * Myntra: https://www.myntra.com/search?q=Brand+Model+Name
+  * Nykaa: https://www.nykaa.com/search/result/?q=Brand+Model+Name
+  * Croma: https://www.croma.com/search?q=Brand+Model+Name
+- URL-encode product names (replace spaces with +, e.g., "Nike+Air+Max+SC")
+- Use very specific product names (brand + exact model) for accurate search results
 - Popular Indian platforms: Amazon.in, Flipkart, Myntra, Ajio, Nykaa, Croma, Reliance Digital`;
 
         // Call OpenAI API - API key from environment variable

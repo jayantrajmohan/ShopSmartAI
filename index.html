@@ -824,18 +824,19 @@
                                     // Generate fallback URL if not provided by AI
                                     let platformUrl = platform.url;
                                     if (!platformUrl && isAvailable) {
+                                        // Create detailed search query with brand + model for better results
                                         const searchQuery = encodeURIComponent(product.name);
                                         const urlMap = {
-                                            'Amazon.in': `https://www.amazon.in/s?k=${searchQuery}`,
-                                            'Flipkart': `https://www.flipkart.com/search?q=${searchQuery}`,
-                                            'Myntra': `https://www.myntra.com/${searchQuery}`,
+                                            'Amazon.in': `https://www.amazon.in/s?k=${searchQuery}&ref=nb_sb_noss`,
+                                            'Flipkart': `https://www.flipkart.com/search?q=${searchQuery}&otracker=search&otracker1=search&marketplace=FLIPKART`,
+                                            'Myntra': `https://www.myntra.com/search?q=${searchQuery}&rawQuery=${searchQuery}`,
                                             'Ajio': `https://www.ajio.com/search/?text=${searchQuery}`,
-                                            'Nykaa': `https://www.nykaa.com/search/result/?q=${searchQuery}`,
-                                            'Croma': `https://www.croma.com/searchB?q=${searchQuery}`,
+                                            'Nykaa': `https://www.nykaa.com/search/result/?q=${searchQuery}&root=search`,
+                                            'Croma': `https://www.croma.com/search?q=${searchQuery}`,
                                             'Decathlon': `https://www.decathlon.in/search?q=${searchQuery}`,
                                             'Reliance Digital': `https://www.reliancedigital.in/search?q=${searchQuery}`
                                         };
-                                        platformUrl = urlMap[platform.name] || `https://www.google.com/search?q=${searchQuery}+${encodeURIComponent(platform.name)}`;
+                                        platformUrl = urlMap[platform.name] || `https://www.google.com/search?q=${searchQuery}+buy+online+${encodeURIComponent(platform.name)}&btnI=1`;
                                     }
 
                                     return `
