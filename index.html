@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopSmart AI - Intelligent Product Recommendations</title>
-    <meta name="description" content="AI-powered product recommendation engine for e-commerce">
+    <title>ShopSmart AI - Smart Shopping for India | Price Comparison</title>
+    <meta name="description" content="AI-powered product recommendations with price comparison across Amazon, Flipkart, Myntra & more. Find best deals in India!">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -89,12 +89,12 @@
     <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-                Find Your Perfect Product<br>
-                <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Powered by AI</span>
+                Smart Shopping for India<br>
+                <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">AI + Price Comparison</span>
             </h1>
             <p class="text-lg sm:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
-                Tell me what you're looking for, and I'll recommend the perfect products based on your preferences, 
-                budget, and needs. No more endless scrolling.
+                Get AI-powered product recommendations with price comparison across Amazon.in, Flipkart, Myntra & more.
+                Find the best deals in India instantly!
             </p>
         </div>
     </section>
@@ -119,11 +119,11 @@
                             </svg>
                             Tell us what you're shopping for
                         </label>
-                        <textarea 
-                            id="productQuery" 
-                            rows="4" 
+                        <textarea
+                            id="productQuery"
+                            rows="4"
                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all resize-none text-gray-900 placeholder-gray-400"
-                            placeholder="Example: I need a comfortable laptop for coding and video calls, budget around $800-1000, prefer something lightweight..."
+                            placeholder="Example: I need wireless earbuds for workouts, budget around ₹2000-3000, good battery life, sweat-resistant..."
                             required
                         ></textarea>
                     </div>
@@ -159,10 +159,10 @@
                                 Budget Range
                             </label>
                             <select id="budget" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all bg-white text-gray-900">
-                                <option value="budget">Budget ($0-$50)</option>
-                                <option value="mid" selected>Mid-range ($50-$200)</option>
-                                <option value="premium">Premium ($200-$500)</option>
-                                <option value="luxury">Luxury ($500+)</option>
+                                <option value="budget">Budget (₹0-₹3,000)</option>
+                                <option value="mid" selected>Mid-range (₹3,000-₹15,000)</option>
+                                <option value="premium">Premium (₹15,000-₹40,000)</option>
+                                <option value="luxury">Luxury (₹40,000+)</option>
                             </select>
                         </div>
                     </div>
@@ -209,14 +209,14 @@
                     <div class="pt-6 border-t border-gray-200">
                         <p class="text-sm font-semibold text-gray-600 mb-3">Quick examples to try:</p>
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="I need wireless headphones for working out, sweat-resistant, good battery life, under $100">
-                                Workout headphones
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="I need wireless earbuds for workouts, sweat-resistant, good battery life, under ₹3000">
+                                Workout earbuds
                             </button>
-                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Looking for a minimalist backpack for daily commute, laptop compartment, water-resistant, professional look">
-                                Commuter backpack
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Looking for a smartphone under ₹20000, good camera, 5G support, long battery life">
+                                Budget smartphone
                             </button>
-                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Need a standing desk for home office, adjustable height, sturdy, budget $300-400">
-                                Standing desk
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Need running shoes for daily jogging, comfortable, good cushioning, budget ₹3000-5000">
+                                Running shoes
                             </button>
                         </div>
                     </div>
@@ -531,140 +531,212 @@
             const products = {
                 electronics: [
                     {
-                        name: 'Sony WH-1000XM5 Wireless Headphones',
-                        price: '$399',
+                        name: 'boAt Airdopes 131 TWS Earbuds',
                         image: '🎧',
-                        description: 'Industry-leading noise cancellation with exceptional sound quality. 30-hour battery life and multipoint connection for seamless switching between devices.',
-                        matchReason: 'Perfect for professionals who need focus and premium audio'
+                        description: 'True wireless earbuds with 60H playback, ENx™ Tech, ASAP™ Charge, IWP™ Technology. IPX4 water resistance for workouts.',
+                        matchReason: 'Best-selling budget TWS in India with great battery life',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹1,299', available: true, rating: '4.1', reviews: '1,45,234', url: 'https://www.amazon.in/s?k=boAt+Airdopes+131' },
+                            { name: 'Flipkart', price: '₹1,199', available: true, rating: '4.2', reviews: '98,456', url: 'https://www.flipkart.com/search?q=boat+airdopes+131' },
+                            { name: 'Myntra', price: '₹1,349', available: false }
+                        ]
                     },
                     {
-                        name: 'Apple AirPods Pro (2nd Gen)',
-                        price: '$249',
-                        image: '🎵',
-                        description: 'Active noise cancellation with transparency mode. Seamless Apple ecosystem integration and impressive spatial audio capabilities.',
-                        matchReason: 'Best-in-class for Apple users prioritizing convenience'
+                        name: 'OnePlus Nord CE 3 Lite 5G',
+                        image: '📱',
+                        description: '8GB RAM, 128GB Storage, Snapdragon 695, 108MP Camera, 5000mAh battery with 67W SUPERVOOC charging.',
+                        matchReason: 'Popular mid-range 5G phone with excellent camera',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹19,999', available: true, rating: '4.3', reviews: '12,456', url: 'https://www.amazon.in/s?k=OnePlus+Nord+CE+3+Lite' },
+                            { name: 'Flipkart', price: '₹19,499', available: true, rating: '4.4', reviews: '8,234', url: 'https://www.flipkart.com/search?q=oneplus+nord+ce+3+lite' },
+                            { name: 'Croma', price: '₹19,990', available: true, rating: '4.2', reviews: '342' }
+                        ]
                     },
                     {
-                        name: 'Logitech MX Master 3S Wireless Mouse',
-                        price: '$99',
-                        image: '🖱️',
-                        description: 'Ergonomic design with quiet clicks and 8K DPI sensor. Multi-device connectivity and customizable buttons for productivity.',
-                        matchReason: 'Top choice for professionals and power users'
+                        name: 'Noise ColorFit Pro 4 Alpha Smartwatch',
+                        image: '⌚',
+                        description: '1.78" AMOLED Display, Bluetooth Calling, 100+ Sports Modes, Heart Rate & SpO2 Monitoring, 7 Days Battery.',
+                        matchReason: 'Top-rated Indian smartwatch brand with premium features',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹2,499', available: true, rating: '4.0', reviews: '34,567', url: 'https://www.amazon.in/s?k=Noise+ColorFit+Pro+4+Alpha' },
+                            { name: 'Flipkart', price: '₹2,299', available: true, rating: '4.1', reviews: '23,891', url: 'https://www.flipkart.com/search?q=noise+colorfit+pro+4' },
+                            { name: 'Myntra', price: '₹2,599', available: false }
+                        ]
                     }
                 ],
                 fashion: [
                     {
-                        name: 'Levi\'s 511 Slim Fit Jeans',
-                        price: '$69',
-                        image: '👖',
-                        description: 'Classic slim fit with stretch comfort. Versatile styling that works for casual or smart-casual occasions.',
-                        matchReason: 'Timeless style with modern comfort and fit'
-                    },
-                    {
-                        name: 'Patagonia Better Sweater Fleece',
-                        price: '$139',
-                        image: '🧥',
-                        description: 'Sustainable fleece jacket with wind-resistant fabric. Fair Trade Certified and made from recycled materials.',
-                        matchReason: 'Eco-conscious choice with legendary durability'
-                    },
-                    {
-                        name: 'Allbirds Tree Runners',
-                        price: '$98',
+                        name: 'Nike Air Max SC Running Shoes',
                         image: '👟',
-                        description: 'Sustainable sneakers made from eucalyptus tree fiber. Ultra-lightweight with excellent breathability and machine washable.',
-                        matchReason: 'Eco-friendly without compromising on comfort or style'
+                        description: 'Lightweight cushioning with Max Air unit. Durable leather and textile upper. Perfect for daily wear and light workouts.',
+                        matchReason: 'Iconic Nike comfort at accessible price point',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹6,495', available: true, rating: '4.3', reviews: '2,345', url: 'https://www.amazon.in/s?k=Nike+Air+Max+SC' },
+                            { name: 'Flipkart', price: '₹6,299', available: true, rating: '4.4', reviews: '1,234', url: 'https://www.flipkart.com/search?q=nike+air+max+sc' },
+                            { name: 'Myntra', price: '₹6,495', available: true, rating: '4.3', reviews: '3,456' }
+                        ]
+                    },
+                    {
+                        name: 'Levi\'s 511 Slim Fit Jeans',
+                        image: '👖',
+                        description: 'Classic slim fit with stretch denim. Mid-rise, sits below waist. Versatile for casual and smart-casual wear.',
+                        matchReason: 'Timeless Levi\'s quality with modern fit',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹2,999', available: true, rating: '4.2', reviews: '8,901', url: 'https://www.amazon.in/s?k=Levis+511+Slim+Fit' },
+                            { name: 'Myntra', price: '₹2,699', available: true, rating: '4.3', reviews: '12,345', url: 'https://www.myntra.com/levis-jeans' },
+                            { name: 'Ajio', price: '₹2,849', available: true, rating: '4.1', reviews: '4,567' }
+                        ]
+                    },
+                    {
+                        name: 'Adidas Essentials Solid T-Shirt',
+                        image: '👕',
+                        description: 'Regular fit cotton tee with iconic 3-Stripes. Soft, comfortable fabric. Available in multiple colors.',
+                        matchReason: 'Affordable Adidas quality for everyday wear',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹999', available: true, rating: '4.1', reviews: '5,678', url: 'https://www.amazon.in/s?k=Adidas+Essentials+T-shirt' },
+                            { name: 'Flipkart', price: '₹949', available: true, rating: '4.0', reviews: '3,456', url: 'https://www.flipkart.com/search?q=adidas+essentials' },
+                            { name: 'Myntra', price: '₹999', available: true, rating: '4.2', reviews: '7,890' }
+                        ]
                     }
                 ],
                 home: [
                     {
-                        name: 'Instant Pot Duo 7-in-1',
-                        price: '$99',
+                        name: 'Prestige IRIS 750W Mixer Grinder',
                         image: '🍲',
-                        description: 'Multi-functional pressure cooker that replaces 7 appliances. Perfect for busy professionals who want healthy home-cooked meals fast.',
-                        matchReason: 'Time-saving versatility for efficient meal prep'
+                        description: '3 Stainless Steel Jars, Powerful 750W Motor, Sturdy ABS Body, 2-Year Warranty. Perfect for Indian kitchen.',
+                        matchReason: 'Trusted Indian brand with excellent grinding power',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹3,199', available: true, rating: '4.3', reviews: '23,456', url: 'https://www.amazon.in/s?k=Prestige+IRIS+750W' },
+                            { name: 'Flipkart', price: '₹2,999', available: true, rating: '4.2', reviews: '18,901', url: 'https://www.flipkart.com/search?q=prestige+mixer+grinder' },
+                            { name: 'Croma', price: '₹3,290', available: true, rating: '4.1', reviews: '567' }
+                        ]
                     },
                     {
-                        name: 'Nespresso Vertuo Next Coffee Maker',
-                        price: '$179',
+                        name: 'Philips Daily Collection Air Fryer',
                         image: '☕',
-                        description: 'One-touch coffee and espresso maker with centrifusion technology. Brews 5 cup sizes with rich crema layer.',
-                        matchReason: 'Barista-quality coffee at home with minimal effort'
+                        description: '4.1L capacity, Rapid Air Technology, Fat removal, Digital display with preset menus. Dishwasher safe parts.',
+                        matchReason: 'Popular air fryer for healthy Indian cooking',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹8,499', available: true, rating: '4.4', reviews: '15,678', url: 'https://www.amazon.in/s?k=Philips+Air+Fryer' },
+                            { name: 'Flipkart', price: '₹7,999', available: true, rating: '4.3', reviews: '12,345', url: 'https://www.flipkart.com/search?q=philips+air+fryer' },
+                            { name: 'Croma', price: '₹8,990', available: true, rating: '4.2', reviews: '2,345' }
+                        ]
                     },
                     {
-                        name: 'Philips Hue Smart Bulbs Starter Kit',
-                        price: '$199',
+                        name: 'Wipro 9W B22 LED Smart Bulb',
                         image: '💡',
-                        description: 'Color-changing smart bulbs with voice and app control. Create custom scenes, schedules, and sync with entertainment.',
-                        matchReason: 'Transform your space with smart, customizable lighting'
+                        description: 'WiFi enabled, 16 million colors, Works with Alexa & Google Home, App control, Voice control, Schedule & timer.',
+                        matchReason: 'Affordable Indian smart home solution',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹599', available: true, rating: '4.0', reviews: '8,901', url: 'https://www.amazon.in/s?k=Wipro+Smart+Bulb' },
+                            { name: 'Flipkart', price: '₹549', available: true, rating: '3.9', reviews: '5,432', url: 'https://www.flipkart.com/search?q=wipro+smart+bulb' },
+                            { name: 'Croma', price: '₹649', available: true, rating: '4.1', reviews: '234' }
+                        ]
                     }
                 ],
                 sports: [
                     {
-                        name: 'Garmin Forerunner 255 GPS Running Watch',
-                        price: '$349',
-                        image: '⌚',
-                        description: 'Advanced running metrics with multi-band GPS. Training readiness, recovery insights, and 14-day battery life.',
-                        matchReason: 'Comprehensive data for serious runners and athletes'
+                        name: 'Nivia Storm Football (Size 5)',
+                        image: '⚽',
+                        description: 'PVC Moulded construction, Machine stitched, Suitable for hard ground. Official size and weight.',
+                        matchReason: 'Popular Indian sports brand, durable for Indian conditions',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹499', available: true, rating: '4.2', reviews: '12,345', url: 'https://www.amazon.in/s?k=Nivia+Storm+Football' },
+                            { name: 'Flipkart', price: '₹449', available: true, rating: '4.1', reviews: '8,901', url: 'https://www.flipkart.com/search?q=nivia+football' },
+                            { name: 'Decathlon', price: '₹499', available: true, rating: '4.0', reviews: '1,234' }
+                        ]
                     },
                     {
-                        name: 'Manduka PRO Yoga Mat',
-                        price: '$120',
+                        name: 'Boldfit Gym Shaker Bottle 700ml',
+                        image: '🥤',
+                        description: 'BPA Free, Leak-proof, Wire ball mixer, Wide mouth, Measurement markings. Dishwasher safe.',
+                        matchReason: 'Top-rated fitness accessory brand in India',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹299', available: true, rating: '4.3', reviews: '45,678', url: 'https://www.amazon.in/s?k=Boldfit+Shaker' },
+                            { name: 'Flipkart', price: '₹249', available: true, rating: '4.2', reviews: '23,456', url: 'https://www.flipkart.com/search?q=boldfit+shaker' },
+                            { name: 'Myntra', price: '₹329', available: false }
+                        ]
+                    },
+                    {
+                        name: 'Cockatoo Yoga Mat 6mm with Bag',
                         image: '🧘',
-                        description: 'High-density 6mm mat with superior cushioning and grip. Eco-friendly, non-toxic, and lifetime guaranteed.',
-                        matchReason: 'Professional-grade support for dedicated practitioners'
-                    },
-                    {
-                        name: 'TRX HOME2 Suspension Training System',
-                        price: '$169',
-                        image: '💪',
-                        description: 'Complete body workout system using your own body weight. Portable, versatile, and includes workout guide.',
-                        matchReason: 'Full-body fitness solution for home or travel'
+                        description: 'Anti-skid texture, High density foam, Eco-friendly, With carrying strap. Perfect for home workouts.',
+                        matchReason: 'Best-selling affordable yoga mat in India',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹699', available: true, rating: '4.1', reviews: '28,901', url: 'https://www.amazon.in/s?k=Cockatoo+Yoga+Mat' },
+                            { name: 'Flipkart', price: '₹649', available: true, rating: '4.0', reviews: '15,678', url: 'https://www.flipkart.com/search?q=yoga+mat' },
+                            { name: 'Decathlon', price: '₹749', available: true, rating: '4.2', reviews: '3,456' }
+                        ]
                     }
                 ],
                 beauty: [
                     {
-                        name: 'Dyson Airwrap Multi-Styler',
-                        price: '$599',
-                        image: '💇',
-                        description: 'All-in-one styling tool using air instead of extreme heat. Curls, waves, smooths, and dries with minimal damage.',
-                        matchReason: 'Premium investment for healthy, salon-quality styling'
+                        name: 'Lakme 9to5 Primer + Matte Lipstick',
+                        image: '💄',
+                        description: 'Long-lasting matte finish, Enriched with Vitamin E, Non-drying formula. Multiple shades available.',
+                        matchReason: 'India\'s most trusted makeup brand',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹425', available: true, rating: '4.2', reviews: '34,567', url: 'https://www.amazon.in/s?k=Lakme+9to5+Lipstick' },
+                            { name: 'Nykaa', price: '₹399', available: true, rating: '4.3', reviews: '56,789', url: 'https://www.nykaa.com/lakme-lipstick' },
+                            { name: 'Myntra', price: '₹449', available: true, rating: '4.1', reviews: '12,345' }
+                        ]
                     },
                     {
-                        name: 'The Ordinary Skincare Starter Set',
-                        price: '$45',
+                        name: 'Minimalist 10% Niacinamide Face Serum',
                         image: '🧴',
-                        description: 'Science-backed skincare essentials for all skin types. Clean ingredients, transparent formulas, incredible value.',
-                        matchReason: 'Effective, affordable introduction to quality skincare'
+                        description: 'For acne & acne marks, Oil control, Pore tightening, Fragrance-free, Non-comedogenic. Made in India.',
+                        matchReason: 'Trending Indian skincare brand with proven results',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹599', available: true, rating: '4.4', reviews: '23,456', url: 'https://www.amazon.in/s?k=Minimalist+Niacinamide' },
+                            { name: 'Nykaa', price: '₹549', available: true, rating: '4.5', reviews: '18,901', url: 'https://www.nykaa.com/minimalist-serum' },
+                            { name: 'Flipkart', price: '₹579', available: true, rating: '4.3', reviews: '8,765' }
+                        ]
                     },
                     {
-                        name: 'Foreo Luna 3 Facial Cleansing Device',
-                        price: '$219',
-                        image: '✨',
-                        description: 'T-Sonic pulsations for deep cleansing and anti-aging massage. App-connected with personalized routines.',
-                        matchReason: 'Advanced skincare technology for visible results'
+                        name: 'Vega VHDH-05 1200W Hair Dryer',
+                        image: '💇',
+                        description: '1200W power, 2 heat/speed settings, Cool shot function, Concentrator nozzle. Foldable for travel.',
+                        matchReason: 'Affordable professional-quality hair dryer',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹749', available: true, rating: '4.0', reviews: '15,678', url: 'https://www.amazon.in/s?k=Vega+Hair+Dryer' },
+                            { name: 'Flipkart', price: '₹699', available: true, rating: '3.9', reviews: '9,876', url: 'https://www.flipkart.com/search?q=vega+hair+dryer' },
+                            { name: 'Nykaa', price: '₹799', available: true, rating: '4.1', reviews: '4,567' }
+                        ]
                     }
                 ],
                 books: [
                     {
-                        name: 'Kindle Paperwhite (16 GB)',
-                        price: '$149',
+                        name: 'Amazon Kindle (11th Gen) with 6" Display',
                         image: '📚',
-                        description: 'Glare-free 6.8" display with adjustable warm light. Waterproof design and weeks of battery life. Access to millions of titles.',
-                        matchReason: 'Ultimate portable reading experience for book lovers'
+                        description: 'Glare-free display, 16GB storage, Weeks of battery life, Access to millions of books. Made for reading.',
+                        matchReason: 'Best e-reader for Indian readers',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹8,999', available: true, rating: '4.5', reviews: '67,890', url: 'https://www.amazon.in/Kindle-6-display' },
+                            { name: 'Flipkart', price: '₹9,499', available: true, rating: '4.4', reviews: '3,456', url: 'https://www.flipkart.com/search?q=kindle' },
+                            { name: 'Croma', price: '₹8,999', available: true, rating: '4.5', reviews: '1,234' }
+                        ]
                     },
                     {
-                        name: '"Atomic Habits" by James Clear',
-                        price: '$16',
+                        name: 'Atomic Habits by James Clear (Paperback)',
                         image: '📖',
-                        description: 'Proven framework for improving every day with tiny changes. #1 New York Times bestseller on habit formation.',
-                        matchReason: 'Life-changing insights for personal development'
+                        description: 'Bestselling self-help book on habit formation. Transform your life with tiny changes. #1 Indian bestseller.',
+                        matchReason: 'Life-changing book, highly rated in India',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹399', available: true, rating: '4.6', reviews: '1,23,456', url: 'https://www.amazon.in/Atomic-Habits-James-Clear/dp/1847941834' },
+                            { name: 'Flipkart', price: '₹379', available: true, rating: '4.5', reviews: '89,012', url: 'https://www.flipkart.com/atomic-habits' },
+                            { name: 'Amazon.in (Kindle)', price: '₹279', available: true, rating: '4.6', reviews: '45,678' }
+                        ]
                     },
                     {
-                        name: 'Audible Premium Plus Membership',
-                        price: '$14.95/mo',
-                        image: '🎙️',
-                        description: 'Unlimited access to audiobooks, podcasts, and originals. Professional narration and offline listening.',
-                        matchReason: 'Perfect for multitaskers and commuters'
+                        name: 'Classmate Pulse 6-Subject Notebook',
+                        image: '📝',
+                        description: '300 pages, Ruled, Superior quality paper, Spiral binding. Perfect for students and professionals.',
+                        matchReason: 'Most popular notebook brand in India',
+                        platforms: [
+                            { name: 'Amazon.in', price: '₹189', available: true, rating: '4.3', reviews: '12,345', url: 'https://www.amazon.in/s?k=Classmate+Notebook' },
+                            { name: 'Flipkart', price: '₹175', available: true, rating: '4.2', reviews: '8,901', url: 'https://www.flipkart.com/search?q=classmate+notebook' },
+                            { name: 'Amazon.in (Pack of 3)', price: '₹499', available: true, rating: '4.4', reviews: '5,678' }
+                        ]
                     }
                 ]
             };
@@ -722,7 +794,77 @@
                 productCard.className = 'bg-gray-50 border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all transform hover:-translate-x-1 animate-fade-in-up';
                 productCard.style.animationDelay = `${index * 0.1}s`;
 
-                const buyUrl = `https://www.amazon.com/s?k=${encodeURIComponent(product.name)}`;
+                // Check if product has platform pricing (new Indian format) or single price (old format)
+                const hasPlatforms = product.platforms && product.platforms.length > 0;
+
+                // Find lowest price if platforms exist
+                let lowestPrice = null;
+                if (hasPlatforms) {
+                    const availablePlatforms = product.platforms.filter(p => p.available);
+                    if (availablePlatforms.length > 0) {
+                        lowestPrice = availablePlatforms.reduce((min, p) => {
+                            const price = parseInt(p.price.replace(/[^\d]/g, ''));
+                            const minPrice = parseInt(min.price.replace(/[^\d]/g, ''));
+                            return price < minPrice ? p : min;
+                        });
+                    }
+                }
+
+                // Build platforms HTML for multi-platform price comparison
+                let platformsHTML = '';
+                if (hasPlatforms) {
+                    platformsHTML = `
+                        <div class="mt-4">
+                            <p class="text-xs font-semibold text-gray-700 mb-2">Compare Prices:</p>
+                            <div class="space-y-2">
+                                ${product.platforms.map(platform => {
+                                    const isLowest = lowestPrice && platform.name === lowestPrice.name && platform.available;
+                                    const isAvailable = platform.available;
+
+                                    return `
+                                        <div class="flex items-center justify-between px-3 py-2 ${isAvailable ? 'bg-white' : 'bg-gray-100 opacity-60'} border ${isLowest ? 'border-green-400 bg-green-50' : 'border-gray-200'} rounded-lg">
+                                            <div class="flex items-center gap-2 flex-1 min-w-0">
+                                                <span class="text-xs font-medium ${isAvailable ? 'text-gray-900' : 'text-gray-500'} truncate">${platform.name}</span>
+                                                ${isLowest ? '<span class="text-xs px-1.5 py-0.5 bg-green-500 text-white rounded font-bold whitespace-nowrap">BEST</span>' : ''}
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                ${platform.available ? `
+                                                    <div class="text-right">
+                                                        <div class="text-sm font-bold ${isLowest ? 'text-green-700' : 'text-gray-900'} whitespace-nowrap">${platform.price}</div>
+                                                        ${platform.rating ? `<div class="text-xs text-gray-500 whitespace-nowrap">⭐ ${platform.rating} (${platform.reviews})</div>` : ''}
+                                                    </div>
+                                                    <a href="${platform.url || '#'}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 ${isLowest ? 'bg-green-600 hover:bg-green-700' : 'bg-primary-500 hover:bg-primary-600'} text-white text-xs font-semibold rounded transition-colors whitespace-nowrap">
+                                                        View
+                                                    </a>
+                                                ` : `
+                                                    <span class="text-xs text-gray-400 italic whitespace-nowrap">Not Available</span>
+                                                `}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Old format - single price and Amazon link (for backward compatibility with AI responses)
+                    const buyUrl = `https://www.amazon.com/s?k=${encodeURIComponent(product.name)}`;
+                    platformsHTML = `
+                        <a href="${buyUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg mt-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="9" cy="21" r="1" stroke-width="2"></circle>
+                                <circle cx="20" cy="21" r="1" stroke-width="2"></circle>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            View on Amazon
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    `;
+                }
+
+                const displayPrice = hasPlatforms && lowestPrice ? `From ${lowestPrice.price}` : (product.price || 'N/A');
 
                 productCard.innerHTML = `
                     <div class="flex items-start gap-4 mb-4">
@@ -736,29 +878,19 @@
                                 <div class="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full font-bold text-xs">
                                     ${index + 1}
                                 </div>
-                                <h4 class="text-lg font-bold text-gray-900 truncate">${product.name}</h4>
+                                <h4 class="text-lg font-bold text-gray-900">${product.name}</h4>
                             </div>
-                            <div class="text-2xl font-bold text-primary-600">${product.price}</div>
+                            <div class="text-2xl font-bold text-primary-600">${displayPrice}</div>
                         </div>
                     </div>
                     <p class="text-gray-600 text-sm leading-relaxed mb-3">${product.description}</p>
-                    <div class="flex items-center gap-2 px-3 py-2 bg-primary-50 border border-primary-200 rounded-lg mb-4">
+                    <div class="flex items-center gap-2 px-3 py-2 bg-primary-50 border border-primary-200 rounded-lg">
                         <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <polyline points="20 6 9 17 4 12" stroke-width="2"></polyline>
                         </svg>
                         <span class="text-xs font-semibold text-primary-700">${product.matchReason}</span>
                     </div>
-                    <a href="${buyUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <circle cx="9" cy="21" r="1" stroke-width="2"></circle>
-                            <circle cx="20" cy="21" r="1" stroke-width="2"></circle>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                        View on Amazon
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    </a>
+                    ${platformsHTML}
                 `;
 
                 recommendationsList.appendChild(productCard);
