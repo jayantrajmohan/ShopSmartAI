@@ -27,65 +27,51 @@ export default async function handler(req, res) {
         if (preferences.fastShipping) prefsText.push('fast shipping available');
         if (preferences.highlyRated) prefsText.push('highly rated');
 
-        const prompt = `You are an expert shopping assistant for Indian e-commerce. A user in India is looking for products with these requirements:
+        const prompt = `You are an expert shopping assistant for Indian D2C (Direct-to-Consumer) brands. A user in India is looking for products:
 
 Query: "${query}"
 Category: ${category}
 Budget: ${budgetRanges[budget]} (INR - Indian Rupees)
 Preferences: ${prefsText.join(', ') || 'none specified'}
 
-Recommend exactly 3 products available in India that best match their needs. Focus on products popular in Indian market from brands like Samsung, OnePlus, Boat, Noise, Xiaomi, Realme, Nike, Adidas, etc.
+Recommend exactly 3 products from official brand websites (D2C model). Focus on brands with strong online presence: Boat, Noise, Nike, Adidas, Minimalist, Mamaearth, Decathlon, OnePlus, Realme, Levi's, etc.
 
 Return ONLY valid JSON in this exact format:
 {
-  "insights": "1-2 sentences explaining your overall recommendation strategy and why these products match their needs",
+  "insights": "1-2 sentences explaining your recommendation strategy",
   "products": [
     {
       "name": "Exact product name (brand + model)",
       "image": "relevant emoji",
-      "description": "Detailed 2-sentence description covering key features and benefits relevant to Indian market",
-      "matchReason": "1 sentence explaining why this specific product matches their query",
-      "platforms": [
-        {
-          "name": "Amazon.in",
-          "price": "₹XX,XXX",
-          "available": true,
-          "rating": "4.5",
-          "reviews": "1,234",
-          "url": "https://www.amazon.in/s?k=product+name"
-        },
-        {
-          "name": "Flipkart",
-          "price": "₹XX,XXX",
-          "available": true,
-          "rating": "4.3",
-          "reviews": "856",
-          "url": "https://www.flipkart.com/search?q=product+name"
-        },
-        {
-          "name": "Myntra",
-          "price": "₹XX,XXX",
-          "available": false
-        }
-      ]
+      "description": "Detailed 2-sentence description covering key features",
+      "matchReason": "1 sentence explaining why this matches their query",
+      "brand": {
+        "name": "Brand Name",
+        "storeUrl": "https://brand-website.com/products/exact-product-slug",
+        "price": "₹XX,XXX",
+        "inStock": true,
+        "shipping": "Free delivery",
+        "warranty": "X year warranty"
+      }
     }
   ]
 }
 
-IMPORTANT:
-- All prices must be in Indian Rupees (₹)
-- Include at least 2-3 platforms per product
-- Mark available=true only for platforms that typically sell this product
-- Use realistic Indian pricing
-- For URLs, create detailed search URLs that include full product name with brand and model:
-  * Amazon.in: https://www.amazon.in/s?k=Brand+Model+Name&ref=nb_sb_noss
-  * Flipkart: https://www.flipkart.com/search?q=Brand+Model+Name&otracker=search
-  * Myntra: https://www.myntra.com/search?q=Brand+Model+Name
-  * Nykaa: https://www.nykaa.com/search/result/?q=Brand+Model+Name
-  * Croma: https://www.croma.com/search?q=Brand+Model+Name
-- URL-encode product names (replace spaces with +, e.g., "Nike+Air+Max+SC")
-- Use very specific product names (brand + exact model) for accurate search results
-- Popular Indian platforms: Amazon.in, Flipkart, Myntra, Ajio, Nykaa, Croma, Reliance Digital`;
+CRITICAL INSTRUCTIONS:
+- storeUrl MUST be direct product page URL, NOT search/category pages
+- Use exact product slugs in URLs (e.g., "/products/airdopes-131")
+- If brand doesn't have D2C site, recommend alternative brand that does
+- Price should be official brand price
+- Verify brand has active e-commerce before recommending
+- For books category: Use Amazon.in direct product URLs (exception allowed)
+
+INDIAN D2C BRANDS BY CATEGORY:
+- Electronics: Boat (boat-lifestyle.com), Noise (gonoise.com), OnePlus (oneplus.in), Realme (buy.realme.com/in)
+- Fashion: Nike (nike.com/in), Adidas (adidas.co.in), Levi's (levi.in), Puma (in.puma.com)
+- Beauty: Minimalist (beminimalist.co), Mamaearth (mamaearth.in), Nykaa (nykaa.com), Plum (plumgoodness.com)
+- Sports: Decathlon (decathlon.in), Nivia (nivia.com)
+- Home: Philips (philips.co.in), Prestige (prestigesmartchef.com)
+- Books: Amazon.in (use direct product URLs with ASIN: amazon.in/dp/ASIN)`;
 
         // Call OpenAI API - API key from environment variable
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -124,6 +110,21 @@ IMPORTANT:
         }
 
         const recommendations = JSON.parse(jsonMatch[0]);
+
+        // Validate D2C structure
+        if (recommendations.products) {
+            recommendations.products.forEach(product => {
+                if (!product.brand || !product.brand.storeUrl) {
+                    throw new Error('Invalid D2C format: missing brand.storeUrl');
+                }
+
+                // Ensure URL is not a search page
+                const url = product.brand.storeUrl;
+                if (url.includes('/s?k=') || url.includes('/search?q=')) {
+                    throw new Error('D2C URL must be direct product page, not search');
+                }
+            });
+        }
 
         return res.status(200).json(recommendations);
 
