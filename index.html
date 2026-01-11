@@ -821,6 +821,23 @@
                                     const isLowest = lowestPrice && platform.name === lowestPrice.name && platform.available;
                                     const isAvailable = platform.available;
 
+                                    // Generate fallback URL if not provided by AI
+                                    let platformUrl = platform.url;
+                                    if (!platformUrl && isAvailable) {
+                                        const searchQuery = encodeURIComponent(product.name);
+                                        const urlMap = {
+                                            'Amazon.in': `https://www.amazon.in/s?k=${searchQuery}`,
+                                            'Flipkart': `https://www.flipkart.com/search?q=${searchQuery}`,
+                                            'Myntra': `https://www.myntra.com/${searchQuery}`,
+                                            'Ajio': `https://www.ajio.com/search/?text=${searchQuery}`,
+                                            'Nykaa': `https://www.nykaa.com/search/result/?q=${searchQuery}`,
+                                            'Croma': `https://www.croma.com/searchB?q=${searchQuery}`,
+                                            'Decathlon': `https://www.decathlon.in/search?q=${searchQuery}`,
+                                            'Reliance Digital': `https://www.reliancedigital.in/search?q=${searchQuery}`
+                                        };
+                                        platformUrl = urlMap[platform.name] || `https://www.google.com/search?q=${searchQuery}+${encodeURIComponent(platform.name)}`;
+                                    }
+
                                     return `
                                         <div class="flex items-center justify-between px-3 py-2 ${isAvailable ? 'bg-white' : 'bg-gray-100 opacity-60'} border ${isLowest ? 'border-green-400 bg-green-50' : 'border-gray-200'} rounded-lg">
                                             <div class="flex items-center gap-2 flex-1 min-w-0">
@@ -833,7 +850,7 @@
                                                         <div class="text-sm font-bold ${isLowest ? 'text-green-700' : 'text-gray-900'} whitespace-nowrap">${platform.price}</div>
                                                         ${platform.rating ? `<div class="text-xs text-gray-500 whitespace-nowrap">⭐ ${platform.rating} (${platform.reviews})</div>` : ''}
                                                     </div>
-                                                    <a href="${platform.url || '#'}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 ${isLowest ? 'bg-green-600 hover:bg-green-700' : 'bg-primary-500 hover:bg-primary-600'} text-white text-xs font-semibold rounded transition-colors whitespace-nowrap">
+                                                    <a href="${platformUrl || '#'}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 ${isLowest ? 'bg-green-600 hover:bg-green-700' : 'bg-primary-500 hover:bg-primary-600'} text-white text-xs font-semibold rounded transition-colors whitespace-nowrap">
                                                         View
                                                     </a>
                                                 ` : `

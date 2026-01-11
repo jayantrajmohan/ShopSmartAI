@@ -51,14 +51,16 @@ Return ONLY valid JSON in this exact format:
           "price": "₹XX,XXX",
           "available": true,
           "rating": "4.5",
-          "reviews": "1,234"
+          "reviews": "1,234",
+          "url": "https://www.amazon.in/s?k=product+name"
         },
         {
           "name": "Flipkart",
           "price": "₹XX,XXX",
           "available": true,
           "rating": "4.3",
-          "reviews": "856"
+          "reviews": "856",
+          "url": "https://www.flipkart.com/search?q=product+name"
         },
         {
           "name": "Myntra",
@@ -75,6 +77,8 @@ IMPORTANT:
 - Include at least 2-3 platforms per product
 - Mark available=true only for platforms that typically sell this product
 - Use realistic Indian pricing
+- For each available platform, include a search URL (e.g., https://www.amazon.in/s?k=product+name or https://www.flipkart.com/search?q=product+name)
+- URL-encode product names in search URLs (replace spaces with +)
 - Popular Indian platforms: Amazon.in, Flipkart, Myntra, Ajio, Nykaa, Croma, Reliance Digital`;
 
         // Call OpenAI API - API key from environment variable
