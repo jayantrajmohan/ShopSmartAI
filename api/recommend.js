@@ -16,10 +16,10 @@ export default async function handler(req, res) {
         }
 
         const budgetRanges = {
-            budget: '$0-$50',
-            mid: '$50-$200',
-            premium: '$200-$500',
-            luxury: '$500+'
+            budget: '₹0-₹3,000',
+            mid: '₹3,000-₹15,000',
+            premium: '₹15,000-₹40,000',
+            luxury: '₹40,000+'
         };
 
         const prefsText = [];
@@ -27,26 +27,55 @@ export default async function handler(req, res) {
         if (preferences.fastShipping) prefsText.push('fast shipping available');
         if (preferences.highlyRated) prefsText.push('highly rated');
 
-        const prompt = `You are an expert shopping assistant. A user is looking for products with these requirements:
+        const prompt = `You are an expert shopping assistant for Indian e-commerce. A user in India is looking for products with these requirements:
 
 Query: "${query}"
 Category: ${category}
-Budget: ${budgetRanges[budget]}
+Budget: ${budgetRanges[budget]} (INR - Indian Rupees)
 Preferences: ${prefsText.join(', ') || 'none specified'}
 
-Recommend exactly 3 products that best match their needs. Return ONLY valid JSON in this exact format:
+Recommend exactly 3 products available in India that best match their needs. Focus on products popular in Indian market from brands like Samsung, OnePlus, Boat, Noise, Xiaomi, Realme, Nike, Adidas, etc.
+
+Return ONLY valid JSON in this exact format:
 {
   "insights": "1-2 sentences explaining your overall recommendation strategy and why these products match their needs",
   "products": [
     {
-      "name": "Exact product name",
-      "price": "$XX",
+      "name": "Exact product name (brand + model)",
       "image": "relevant emoji",
-      "description": "Detailed 2-sentence description covering key features and benefits",
-      "matchReason": "1 sentence explaining why this specific product matches their query"
+      "description": "Detailed 2-sentence description covering key features and benefits relevant to Indian market",
+      "matchReason": "1 sentence explaining why this specific product matches their query",
+      "platforms": [
+        {
+          "name": "Amazon.in",
+          "price": "₹XX,XXX",
+          "available": true,
+          "rating": "4.5",
+          "reviews": "1,234"
+        },
+        {
+          "name": "Flipkart",
+          "price": "₹XX,XXX",
+          "available": true,
+          "rating": "4.3",
+          "reviews": "856"
+        },
+        {
+          "name": "Myntra",
+          "price": "₹XX,XXX",
+          "available": false
+        }
+      ]
     }
   ]
-}`;
+}
+
+IMPORTANT:
+- All prices must be in Indian Rupees (₹)
+- Include at least 2-3 platforms per product
+- Mark available=true only for platforms that typically sell this product
+- Use realistic Indian pricing
+- Popular Indian platforms: Amazon.in, Flipkart, Myntra, Ajio, Nykaa, Croma, Reliance Digital`;
 
         // Call OpenAI API - API key from environment variable
         const response = await fetch('https://api.openai.com/v1/chat/completions', {

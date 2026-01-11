@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Vercel serverless function for secure OpenAI API integration\n\nChanges:\n- Create /api/recommend.js serverless function for backend API calls\n- Update frontend to call /api/recommend instead of OpenAI directly\n- Remove hardcoded API key from frontend \\(now uses environment variables\\)\n- Add vercel.json configuration for serverless functions\n- Add VERCEL_SETUP.md with complete deployment guide\n\nSecurity improvements:\n- API key now stored in Vercel environment variables \\(not in code\\)\n- Serverless function acts as secure backend proxy\n- No API key exposure in browser/frontend code\n- Production-ready secure architecture\n\nDeployment:\n- Deploy to Vercel\n- Add OPENAI_API_KEY environment variable in Vercel dashboard\n- Set USE_REAL_AI = true in index.html\n- API key accessed via process.env.OPENAI_API_KEY on server\n\nThis enables real AI recommendations in production while keeping API key secure.\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git pull:*)"
+    ]
+  }
+}
