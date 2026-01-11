@@ -1,0 +1,69 @@
+# API Keys and Secrets
+# NEVER commit API keys to version control
+*.env
+.env.local
+.env.*.local
+config/api-keys.js
+secrets.json
+
+# API Key patterns (safety net)
+**/OPENAI_API_KEY*
+**/sk-proj-*
+**/sk-*
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency Directories
+node_modules/
+jspm_packages/
+bower_components/
+
+# Build Outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js.snap
+
+# Misc
+.vercel
+.netlify

@@ -5,215 +5,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopSmart AI - Intelligent Product Recommendations</title>
     <meta name="description" content="AI-powered product recommendation engine for e-commerce">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
-                    <span>ShopSmart AI</span>
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">ShopSmart AI</span>
                 </div>
-                <div class="header-badge">
-                    <span class="badge-dot"></span>
-                    AI-Powered Demo
+                <div class="flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8h.01"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-blue-700">Demo Mode - Mock Data</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Find Your Perfect Product<br>
-                    <span class="gradient-text">Powered by AI</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Tell me what you're looking for, and I'll recommend the perfect products based on your preferences, 
-                    budget, and needs. No more endless scrolling.
-                </p>
-            </div>
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Find Your Perfect Product<br>
+                <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Powered by AI</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
+                Tell me what you're looking for, and I'll recommend the perfect products based on your preferences, 
+                budget, and needs. No more endless scrolling.
+            </p>
         </div>
     </section>
 
-    <!-- Main App Section -->
-    <section class="app-section">
-        <div class="container">
-            <div class="app-grid">
-                <!-- Input Panel -->
-                <div class="input-panel">
-                    <div class="panel-header">
-                        <h2>What are you looking for?</h2>
-                        <p>Describe what you need in natural language</p>
+    <!-- Main App -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <!-- Input Panel -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 h-fit">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">What are you looking for?</h2>
+                    <p class="text-gray-600">Describe what you need in natural language</p>
+                </div>
+
+                <form id="recommendationForm" class="space-y-6">
+                    <!-- Query Input -->
+                    <div>
+                        <label class="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                            <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            Tell us what you're shopping for
+                        </label>
+                        <textarea 
+                            id="productQuery" 
+                            rows="4" 
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all resize-none text-gray-900 placeholder-gray-400"
+                            placeholder="Example: I need a comfortable laptop for coding and video calls, budget around $800-1000, prefer something lightweight..."
+                            required
+                        ></textarea>
                     </div>
 
-                    <form id="recommendationForm" class="recommendation-form">
-                        <div class="form-group">
-                            <label for="productQuery">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    <!-- Category and Budget -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                                <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
                                 </svg>
-                                Tell us what you're shopping for
+                                Category
                             </label>
-                            <textarea 
-                                id="productQuery" 
-                                name="query" 
-                                rows="4" 
-                                placeholder="Example: I need a comfortable laptop for coding and video calls, budget around $800-1000, prefer something lightweight..."
-                                required
-                            ></textarea>
+                            <select id="category" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all bg-white text-gray-900">
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion & Apparel</option>
+                                <option value="home">Home & Kitchen</option>
+                                <option value="sports">Sports & Outdoors</option>
+                                <option value="beauty">Beauty & Personal Care</option>
+                                <option value="books">Books & Media</option>
+                            </select>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="category">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="3" width="7" height="7"></rect>
-                                        <rect x="14" y="14" width="7" height="7"></rect>
-                                        <rect x="3" y="14" width="7" height="7"></rect>
-                                    </svg>
-                                    Category
-                                </label>
-                                <select id="category" name="category">
-                                    <option value="electronics">Electronics</option>
-                                    <option value="fashion">Fashion & Apparel</option>
-                                    <option value="home">Home & Kitchen</option>
-                                    <option value="sports">Sports & Outdoors</option>
-                                    <option value="beauty">Beauty & Personal Care</option>
-                                    <option value="books">Books & Media</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="budget">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                    </svg>
-                                    Budget Range
-                                </label>
-                                <select id="budget" name="budget">
-                                    <option value="budget">Budget ($0-$50)</option>
-                                    <option value="mid" selected>Mid-range ($50-$200)</option>
-                                    <option value="premium">Premium ($200-$500)</option>
-                                    <option value="luxury">Luxury ($500+)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
+                        <div>
+                            <label class="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                                <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <line x1="12" y1="1" x2="12" y2="23" stroke-width="2"></line>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                 </svg>
-                                Preferences (optional)
+                                Budget Range
                             </label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="eco_friendly" value="true">
-                                    <span>Eco-friendly</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="fast_shipping" value="true">
-                                    <span>Fast shipping</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="highly_rated" value="true" checked>
-                                    <span>Highly rated</span>
-                                </label>
-                            </div>
+                            <select id="budget" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all bg-white text-gray-900">
+                                <option value="budget">Budget ($0-$50)</option>
+                                <option value="mid" selected>Mid-range ($50-$200)</option>
+                                <option value="premium">Premium ($200-$500)</option>
+                                <option value="luxury">Luxury ($500+)</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary" id="submitBtn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4"></path>
-                                <path d="M12 8h.01"></path>
+                    <!-- Preferences -->
+                    <div>
+                        <label class="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
+                            <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" stroke-width="2"></polyline>
                             </svg>
-                            Get AI Recommendations
-                        </button>
+                            Preferences (optional)
+                        </label>
+                        <div class="flex flex-wrap gap-3">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="eco_friendly" class="w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500">
+                                <span class="text-sm font-medium text-gray-700">Eco-friendly</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="fast_shipping" class="w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500">
+                                <span class="text-sm font-medium text-gray-700">Fast shipping</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="highly_rated" checked class="w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500">
+                                <span class="text-sm font-medium text-gray-700">Highly rated</span>
+                            </label>
+                        </div>
+                    </div>
 
-                        <div class="quick-examples">
-                            <p>Quick examples to try:</p>
-                            <button type="button" class="example-btn" data-query="I need wireless headphones for working out, sweat-resistant, good battery life, under $100">
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transform hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8h.01"></path>
+                        </svg>
+                        Get AI Recommendations
+                    </button>
+
+                    <!-- Quick Examples -->
+                    <div class="pt-6 border-t border-gray-200">
+                        <p class="text-sm font-semibold text-gray-600 mb-3">Quick examples to try:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="I need wireless headphones for working out, sweat-resistant, good battery life, under $100">
                                 Workout headphones
                             </button>
-                            <button type="button" class="example-btn" data-query="Looking for a minimalist backpack for daily commute, laptop compartment, water-resistant, professional look">
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Looking for a minimalist backpack for daily commute, laptop compartment, water-resistant, professional look">
                                 Commuter backpack
                             </button>
-                            <button type="button" class="example-btn" data-query="Need a standing desk for home office, adjustable height, sturdy, budget $300-400">
+                            <button type="button" class="example-btn px-3 py-2 text-xs font-medium bg-gray-100 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300 rounded-lg transition-all" data-query="Need a standing desk for home office, adjustable height, sturdy, budget $300-400">
                                 Standing desk
                             </button>
                         </div>
-                    </form>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 lg:sticky lg:top-24 h-fit">
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="flex flex-col items-center justify-center py-16 text-center">
+                    <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ready to find your perfect product?</h3>
+                    <p class="text-gray-600 max-w-sm">Describe what you're looking for, and our AI will recommend the best options for you.</p>
                 </div>
 
-                <!-- Results Panel -->
-                <div class="results-panel">
-                    <div id="loadingState" class="state-container" style="display: none;">
-                        <div class="loading-animation">
-                            <div class="loading-spinner"></div>
-                            <p>AI is analyzing your preferences...</p>
-                            <div class="loading-steps">
-                                <div class="step active">Understanding your needs</div>
-                                <div class="step">Finding perfect matches</div>
-                                <div class="step">Ranking by relevance</div>
-                            </div>
+                <!-- Loading State -->
+                <div id="loadingState" class="hidden flex flex-col items-center justify-center py-16">
+                    <div class="w-16 h-16 border-4 border-gray-200 border-t-primary-500 rounded-full animate-spin mb-6"></div>
+                    <p class="text-lg font-semibold text-gray-900 mb-6">AI is analyzing your preferences...</p>
+                    <div class="w-full max-w-sm space-y-3">
+                        <div id="step1" class="px-4 py-3 bg-primary-500 text-white rounded-lg text-sm font-medium transition-all">
+                            Understanding your needs
+                        </div>
+                        <div id="step2" class="px-4 py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium transition-all">
+                            Finding perfect matches
+                        </div>
+                        <div id="step3" class="px-4 py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium transition-all">
+                            Ranking by relevance
                         </div>
                     </div>
+                </div>
 
-                    <div id="emptyState" class="state-container">
-                        <div class="empty-illustration">
-                            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4"></path>
-                                <path d="M12 8h.01"></path>
+                <!-- Results -->
+                <div id="resultsContainer" class="hidden">
+                    <div class="flex justify-between items-start mb-6 pb-6 border-b-2 border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-900">AI Recommendations</h3>
+                        <div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 border border-green-200 rounded-lg">
+                            <svg class="w-4 h-4 text-green-600 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
+                            <span class="text-xs font-semibold text-green-700">High Match</span>
                         </div>
-                        <h3>Ready to find your perfect product?</h3>
-                        <p>Describe what you're looking for, and our AI will recommend the best options for you.</p>
                     </div>
 
-                    <div id="resultsContainer" style="display: none;">
-                        <div class="results-header">
-                            <h3>AI Recommendations</h3>
-                            <div class="results-meta">
-                                <span class="confidence-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                    </svg>
-                                    High Confidence Match
-                                </span>
-                            </div>
-                        </div>
+                    <div id="recommendationsList" class="space-y-4 mb-6">
+                        <!-- Products will be inserted here -->
+                    </div>
 
-                        <div id="recommendationsList" class="recommendations-list">
-                            <!-- Recommendations will be inserted here -->
-                        </div>
-
-                        <div class="ai-insights">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <path d="M12 16v-4"></path>
-                                    <path d="M12 8h.01"></path>
-                                </svg>
-                                AI Analysis
-                            </h4>
-                            <p id="aiInsights"></p>
-                        </div>
+                    <div class="p-6 bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200 rounded-xl">
+                        <h4 class="flex items-center gap-2 font-bold text-gray-900 mb-3">
+                            <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8h.01"></path>
+                            </svg>
+                            AI Analysis
+                        </h4>
+                        <p id="aiInsights" class="text-gray-700 leading-relaxed"></p>
                     </div>
                 </div>
             </div>
@@ -221,76 +289,546 @@
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
+    <section class="bg-white py-16 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center group hover:transform hover:-translate-y-2 transition-all">
+                    <div class="relative mb-6">
+                        <div class="text-7xl font-bold text-gray-100 absolute -top-4 left-1/2 transform -translate-x-1/2">01</div>
+                        <div class="relative w-16 h-16 mx-auto bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <h3>Describe Your Needs</h3>
-                    <p>Tell us what you're looking for in natural language - no need for specific keywords</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Describe Your Needs</h3>
+                    <p class="text-gray-600 leading-relaxed">Tell us what you're looking for in natural language - no need for specific keywords</p>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
+                <!-- Step 2 -->
+                <div class="text-center group hover:transform hover:-translate-y-2 transition-all">
+                    <div class="relative mb-6">
+                        <div class="text-7xl font-bold text-gray-100 absolute -top-4 left-1/2 transform -translate-x-1/2">02</div>
+                        <div class="relative w-16 h-16 mx-auto bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke-width="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21" stroke-width="2"></line>
+                                <line x1="12" y1="17" x2="12" y2="21" stroke-width="2"></line>
+                            </svg>
+                        </div>
                     </div>
-                    <h3>AI Analysis</h3>
-                    <p>Our AI understands your preferences, budget, and requirements to find perfect matches</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">AI Analysis</h3>
+                    <p class="text-gray-600 leading-relaxed">Our AI understands your preferences, budget, and requirements to find perfect matches</p>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                        </svg>
+                <!-- Step 3 -->
+                <div class="text-center group hover:transform hover:-translate-y-2 transition-all">
+                    <div class="relative mb-6">
+                        <div class="text-7xl font-bold text-gray-100 absolute -top-4 left-1/2 transform -translate-x-1/2">03</div>
+                        <div class="relative w-16 h-16 mx-auto bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-white fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <h3>Personalized Results</h3>
-                    <p>Get ranked recommendations with detailed explanations of why each product fits your needs</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Personalized Results</h3>
+                    <p class="text-gray-600 leading-relaxed">Get ranked recommendations with detailed explanations of why each product fits your needs</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p><strong>ShopSmart AI</strong> - Portfolio Project by Jayant Raj Mohan</p>
-                    <p>AI Product Manager | GenAI Solutions</p>
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <p class="font-bold text-white mb-2">ShopSmart AI</p>
+                    <p class="text-sm">Portfolio Project by Jayant Raj Mohan</p>
+                    <p class="text-sm">AI Product Manager | GenAI Solutions</p>
                 </div>
-                <div class="footer-links">
-                    <a href="https://linkedin.com/in/jayantrajmohan" target="_blank">LinkedIn</a>
-                    <a href="mailto:jayantrajmohan@gmail.com">Contact</a>
-                    <a href="../index.html">Back to Portfolio</a>
+                <div>
+                    <p class="font-semibold text-white mb-3">Links</p>
+                    <div class="space-y-2 text-sm">
+                        <a href="https://linkedin.com/in/jayantrajmohan" target="_blank" class="block hover:text-primary-400 transition-colors">LinkedIn</a>
+                        <a href="mailto:jayantrajmohan@gmail.com" class="block hover:text-primary-400 transition-colors">Contact</a>
+                        <a href="../index.html" class="block hover:text-primary-400 transition-colors">Back to Portfolio</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-3">About This Demo</p>
+                    <div class="flex items-start gap-2 p-4 bg-gray-800 rounded-lg border border-gray-700">
+                        <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8h.01"></path>
+                        </svg>
+                        <p class="text-xs">This is a portfolio demonstration using curated mock data to showcase the AI recommendation concept. In production, this would connect to real product databases and live AI processing.</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-note">
-                <p>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 16v-4"></path>
-                        <path d="M12 8h.01"></path>
-                    </svg>
-                    This is a demo showcasing AI-powered product recommendations. 
-                    To use real AI, add your OpenAI API key in script.js
-                </p>
+            <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2026 Jayant Raj Mohan. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script>
+        // Configuration
+        // SECURITY NOTE: Never commit API keys to public repositories
+        // For production: Use environment variables and backend API
+        const OPENAI_API_KEY = ''; // Add your key here for testing: 'sk-...'
+        const USE_REAL_AI = OPENAI_API_KEY.length > 0;
+
+        // DOM Elements
+        const form = document.getElementById('recommendationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const queryInput = document.getElementById('productQuery');
+        const categorySelect = document.getElementById('category');
+        const budgetSelect = document.getElementById('budget');
+        const emptyState = document.getElementById('emptyState');
+        const loadingState = document.getElementById('loadingState');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const recommendationsList = document.getElementById('recommendationsList');
+        const aiInsights = document.getElementById('aiInsights');
+
+        // Example buttons
+        document.querySelectorAll('.example-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                queryInput.value = this.dataset.query;
+                queryInput.focus();
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const query = formData.get('productQuery') || queryInput.value;
+            const category = categorySelect.value;
+            const budget = budgetSelect.value;
+            
+            const preferences = {
+                ecoFriendly: formData.get('eco_friendly') === 'on',
+                fastShipping: formData.get('fast_shipping') === 'on',
+                highlyRated: formData.get('highly_rated') === 'on'
+            };
+            
+            await getRecommendations(query, category, budget, preferences);
+        });
+
+        // Main recommendation function
+        async function getRecommendations(query, category, budget, preferences) {
+            showState('loading');
+            animateLoadingSteps();
+
+            try {
+                let recommendations;
+                if (USE_REAL_AI) {
+                    recommendations = await getRealAIRecommendations(query, category, budget, preferences);
+                } else {
+                    recommendations = await getMockRecommendations(query, category, budget, preferences);
+                }
+                displayRecommendations(recommendations);
+            } catch (error) {
+                console.error('Error:', error);
+
+                // Provide more specific error messages
+                let errorMessage = 'Something went wrong. ';
+                if (error.message.includes('API request failed')) {
+                    errorMessage += 'Could not connect to AI service. Please check your API key.';
+                } else if (error.message.includes('JSON')) {
+                    errorMessage += 'Received invalid response. Please try again.';
+                } else {
+                    errorMessage += 'Please try again or check the console for details.';
+                }
+
+                alert(errorMessage);
+                showState('empty');
+            }
+        }
+
+        // Real AI using OpenAI API
+        async function getRealAIRecommendations(query, category, budget, preferences) {
+            const budgetRanges = {
+                budget: '$0-$50',
+                mid: '$50-$200',
+                premium: '$200-$500',
+                luxury: '$500+'
+            };
+
+            const prefsText = [];
+            if (preferences.ecoFriendly) prefsText.push('eco-friendly/sustainable');
+            if (preferences.fastShipping) prefsText.push('fast shipping available');
+            if (preferences.highlyRated) prefsText.push('highly rated');
+
+            const prompt = `You are an expert shopping assistant. A user is looking for products with these requirements:
+
+Query: "${query}"
+Category: ${category}
+Budget: ${budgetRanges[budget]}
+Preferences: ${prefsText.join(', ') || 'none specified'}
+
+Recommend exactly 3 products that best match their needs. Return ONLY valid JSON in this exact format:
+{
+  "insights": "1-2 sentences explaining your overall recommendation strategy and why these products match their needs",
+  "products": [
+    {
+      "name": "Exact product name",
+      "price": "$XX",
+      "image": "relevant emoji",
+      "description": "Detailed 2-sentence description covering key features and benefits",
+      "matchReason": "1 sentence explaining why this specific product matches their query"
+    }
+  ]
+}`;
+
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${OPENAI_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-4o-mini',
+                        messages: [
+                            { role: 'system', content: 'You are a helpful shopping assistant that returns only valid JSON responses.' },
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1000
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const content = data.choices[0].message.content;
+
+                // Parse JSON from response
+                const jsonMatch = content.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) {
+                    throw new Error('No valid JSON found in response');
+                }
+
+                return JSON.parse(jsonMatch[0]);
+            } catch (error) {
+                console.error('OpenAI API Error:', error);
+                throw error;
+            }
+        }
+
+        // Mock AI for demo
+        function getMockRecommendations(query, category, budget, preferences) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Generate dynamic insights based on actual user input
+                    let insights = `Based on your search for "${query.substring(0, 50)}${query.length > 50 ? '...' : ''}", I've analyzed `;
+
+                    const budgetNames = {
+                        budget: 'budget-friendly',
+                        mid: 'mid-range',
+                        premium: 'premium',
+                        luxury: 'luxury'
+                    };
+
+                    insights += `${category} products in the ${budgetNames[budget]} category. `;
+
+                    if (preferences.highlyRated) {
+                        insights += 'All recommendations have excellent customer ratings. ';
+                    }
+                    if (preferences.ecoFriendly) {
+                        insights += 'I prioritized sustainable and eco-conscious options. ';
+                    }
+                    if (preferences.fastShipping) {
+                        insights += 'These products typically offer quick delivery. ';
+                    }
+
+                    insights += 'Each option balances quality, value, and your specific needs.';
+
+                    const mockData = {
+                        insights: insights,
+                        products: generateMockProducts(query, category, budget)
+                    };
+                    resolve(mockData);
+                }, 2500);
+            });
+        }
+
+        function generateMockProducts(query, category, budget) {
+            const products = {
+                electronics: [
+                    {
+                        name: 'Sony WH-1000XM5 Wireless Headphones',
+                        price: '$399',
+                        image: '🎧',
+                        description: 'Industry-leading noise cancellation with exceptional sound quality. 30-hour battery life and multipoint connection for seamless switching between devices.',
+                        matchReason: 'Perfect for professionals who need focus and premium audio'
+                    },
+                    {
+                        name: 'Apple AirPods Pro (2nd Gen)',
+                        price: '$249',
+                        image: '🎵',
+                        description: 'Active noise cancellation with transparency mode. Seamless Apple ecosystem integration and impressive spatial audio capabilities.',
+                        matchReason: 'Best-in-class for Apple users prioritizing convenience'
+                    },
+                    {
+                        name: 'Logitech MX Master 3S Wireless Mouse',
+                        price: '$99',
+                        image: '🖱️',
+                        description: 'Ergonomic design with quiet clicks and 8K DPI sensor. Multi-device connectivity and customizable buttons for productivity.',
+                        matchReason: 'Top choice for professionals and power users'
+                    }
+                ],
+                fashion: [
+                    {
+                        name: 'Levi\'s 511 Slim Fit Jeans',
+                        price: '$69',
+                        image: '👖',
+                        description: 'Classic slim fit with stretch comfort. Versatile styling that works for casual or smart-casual occasions.',
+                        matchReason: 'Timeless style with modern comfort and fit'
+                    },
+                    {
+                        name: 'Patagonia Better Sweater Fleece',
+                        price: '$139',
+                        image: '🧥',
+                        description: 'Sustainable fleece jacket with wind-resistant fabric. Fair Trade Certified and made from recycled materials.',
+                        matchReason: 'Eco-conscious choice with legendary durability'
+                    },
+                    {
+                        name: 'Allbirds Tree Runners',
+                        price: '$98',
+                        image: '👟',
+                        description: 'Sustainable sneakers made from eucalyptus tree fiber. Ultra-lightweight with excellent breathability and machine washable.',
+                        matchReason: 'Eco-friendly without compromising on comfort or style'
+                    }
+                ],
+                home: [
+                    {
+                        name: 'Instant Pot Duo 7-in-1',
+                        price: '$99',
+                        image: '🍲',
+                        description: 'Multi-functional pressure cooker that replaces 7 appliances. Perfect for busy professionals who want healthy home-cooked meals fast.',
+                        matchReason: 'Time-saving versatility for efficient meal prep'
+                    },
+                    {
+                        name: 'Nespresso Vertuo Next Coffee Maker',
+                        price: '$179',
+                        image: '☕',
+                        description: 'One-touch coffee and espresso maker with centrifusion technology. Brews 5 cup sizes with rich crema layer.',
+                        matchReason: 'Barista-quality coffee at home with minimal effort'
+                    },
+                    {
+                        name: 'Philips Hue Smart Bulbs Starter Kit',
+                        price: '$199',
+                        image: '💡',
+                        description: 'Color-changing smart bulbs with voice and app control. Create custom scenes, schedules, and sync with entertainment.',
+                        matchReason: 'Transform your space with smart, customizable lighting'
+                    }
+                ],
+                sports: [
+                    {
+                        name: 'Garmin Forerunner 255 GPS Running Watch',
+                        price: '$349',
+                        image: '⌚',
+                        description: 'Advanced running metrics with multi-band GPS. Training readiness, recovery insights, and 14-day battery life.',
+                        matchReason: 'Comprehensive data for serious runners and athletes'
+                    },
+                    {
+                        name: 'Manduka PRO Yoga Mat',
+                        price: '$120',
+                        image: '🧘',
+                        description: 'High-density 6mm mat with superior cushioning and grip. Eco-friendly, non-toxic, and lifetime guaranteed.',
+                        matchReason: 'Professional-grade support for dedicated practitioners'
+                    },
+                    {
+                        name: 'TRX HOME2 Suspension Training System',
+                        price: '$169',
+                        image: '💪',
+                        description: 'Complete body workout system using your own body weight. Portable, versatile, and includes workout guide.',
+                        matchReason: 'Full-body fitness solution for home or travel'
+                    }
+                ],
+                beauty: [
+                    {
+                        name: 'Dyson Airwrap Multi-Styler',
+                        price: '$599',
+                        image: '💇',
+                        description: 'All-in-one styling tool using air instead of extreme heat. Curls, waves, smooths, and dries with minimal damage.',
+                        matchReason: 'Premium investment for healthy, salon-quality styling'
+                    },
+                    {
+                        name: 'The Ordinary Skincare Starter Set',
+                        price: '$45',
+                        image: '🧴',
+                        description: 'Science-backed skincare essentials for all skin types. Clean ingredients, transparent formulas, incredible value.',
+                        matchReason: 'Effective, affordable introduction to quality skincare'
+                    },
+                    {
+                        name: 'Foreo Luna 3 Facial Cleansing Device',
+                        price: '$219',
+                        image: '✨',
+                        description: 'T-Sonic pulsations for deep cleansing and anti-aging massage. App-connected with personalized routines.',
+                        matchReason: 'Advanced skincare technology for visible results'
+                    }
+                ],
+                books: [
+                    {
+                        name: 'Kindle Paperwhite (16 GB)',
+                        price: '$149',
+                        image: '📚',
+                        description: 'Glare-free 6.8" display with adjustable warm light. Waterproof design and weeks of battery life. Access to millions of titles.',
+                        matchReason: 'Ultimate portable reading experience for book lovers'
+                    },
+                    {
+                        name: '"Atomic Habits" by James Clear',
+                        price: '$16',
+                        image: '📖',
+                        description: 'Proven framework for improving every day with tiny changes. #1 New York Times bestseller on habit formation.',
+                        matchReason: 'Life-changing insights for personal development'
+                    },
+                    {
+                        name: 'Audible Premium Plus Membership',
+                        price: '$14.95/mo',
+                        image: '🎙️',
+                        description: 'Unlimited access to audiobooks, podcasts, and originals. Professional narration and offline listening.',
+                        matchReason: 'Perfect for multitaskers and commuters'
+                    }
+                ]
+            };
+
+            return products[category] || products.electronics;
+        }
+
+        // Display functions
+        function showState(state) {
+            emptyState.classList.toggle('hidden', state !== 'empty');
+            loadingState.classList.toggle('hidden', state !== 'loading');
+            resultsContainer.classList.toggle('hidden', state !== 'results');
+        }
+
+        function animateLoadingSteps() {
+            const stepMessages = USE_REAL_AI
+                ? [
+                    'Analyzing your query with AI...',
+                    'Finding perfect product matches...',
+                    'Ranking recommendations...'
+                ]
+                : [
+                    'Understanding your needs',
+                    'Finding perfect matches',
+                    'Ranking by relevance'
+                ];
+
+            const steps = ['step1', 'step2', 'step3'];
+
+            // Update step text
+            steps.forEach((stepId, index) => {
+                document.getElementById(stepId).textContent = stepMessages[index];
+            });
+
+            // Animate steps
+            steps.forEach((stepId, index) => {
+                setTimeout(() => {
+                    steps.forEach(id => {
+                        const el = document.getElementById(id);
+                        el.classList.remove('bg-primary-500', 'text-white');
+                        el.classList.add('bg-gray-100', 'text-gray-600');
+                    });
+                    const currentStep = document.getElementById(stepId);
+                    currentStep.classList.remove('bg-gray-100', 'text-gray-600');
+                    currentStep.classList.add('bg-primary-500', 'text-white');
+                }, index * 800);
+            });
+        }
+
+        function displayRecommendations(data) {
+            recommendationsList.innerHTML = '';
+
+            data.products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-gray-50 border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all transform hover:-translate-x-1 animate-fade-in-up';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+
+                const buyUrl = `https://www.amazon.com/s?k=${encodeURIComponent(product.name)}`;
+
+                productCard.innerHTML = `
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center text-4xl">
+                                ${product.image || '📦'}
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full font-bold text-xs">
+                                    ${index + 1}
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900 truncate">${product.name}</h4>
+                            </div>
+                            <div class="text-2xl font-bold text-primary-600">${product.price}</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-3">${product.description}</p>
+                    <div class="flex items-center gap-2 px-3 py-2 bg-primary-50 border border-primary-200 rounded-lg mb-4">
+                        <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12" stroke-width="2"></polyline>
+                        </svg>
+                        <span class="text-xs font-semibold text-primary-700">${product.matchReason}</span>
+                    </div>
+                    <a href="${buyUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1" stroke-width="2"></circle>
+                            <circle cx="20" cy="21" r="1" stroke-width="2"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        View on Amazon
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                `;
+
+                recommendationsList.appendChild(productCard);
+            });
+
+            aiInsights.textContent = data.insights;
+            showState('results');
+
+            if (window.innerWidth <= 1024) {
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Update UI based on AI mode
+        function updateAIMode() {
+            const badge = document.querySelector('header .flex.items-center.gap-2.px-4.py-2');
+            if (USE_REAL_AI) {
+                badge.className = 'flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg';
+                badge.innerHTML = `
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium text-green-700">Live AI Mode</span>
+                `;
+                console.log('%c✅ Live AI Mode Enabled', 'font-size: 16px; font-weight: bold; color: #10b981;');
+                console.log('%cUsing OpenAI GPT-4o-mini for real product recommendations', 'font-size: 14px;');
+            } else {
+                console.log('%c🤖 Demo Mode Active', 'font-size: 16px; font-weight: bold; color: #6366f1;');
+                console.log('%cThis demo uses curated mock data. To enable real AI:', 'font-size: 14px;');
+                console.log('%c1. Get an OpenAI API key from: https://platform.openai.com/api-keys', 'font-size: 12px; color: #6b7280;');
+                console.log('%c2. Add your API key to the OPENAI_API_KEY variable (line 378)', 'font-size: 12px; color: #6b7280;');
+                console.log('%c3. Refresh the page - it will automatically detect and use the API', 'font-size: 12px; color: #6b7280;');
+            }
+        }
+
+        // Initialize on page load
+        updateAIMode();
+    </script>
 </body>
 </html>
